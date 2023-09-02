@@ -1,0 +1,17 @@
+1st the diagram
+player against computer
+the most important is the functionality and data validation
+make a diagram of the whole game
+code needs tidy (use my tools)
+python code checker --> https://pep8ci.herokuapp.com/
+Instructions for the user in the game
+interaction with the player, informing about wrong and bad options
+every function has a docstring """
+try - except as much as I need and is appropriate
+Colorama library for colours in the outcome --> https://pypi.org/project/colorama/
+Installing packages/libraries --> https://packaging.python.org/en/latest/tutorials/installing-packages/
+Graeme next meeting 7 pm on tuesday 5th
+
+
+
+
