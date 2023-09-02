@@ -1,18 +1,34 @@
-def get_shot():
+def get_shot(destiny):
     """enabling the player to enter the shot"""
     
     ok = "n"
     while ok == "n":
-        shot = input("please enter your guess: ")
-        shot = int(shot)
-        if shot < 0 or shot > 99:
-            print("incorrect number, try again")
-        else:
-            ok = 'y'
-            break
+        try:
+            shot = input("please enter your guess: ")
+            shot = int(shot)
+            if shot < 0 or shot > 99:
+                print("incorrect number, try again")
+            else:
+                ok = 'y'
+                if shot in hit or shot in miss or shot in comp:
+                    print("you have already guessed that, try again")
+                    ok = 'n'
+                break
+        except:
+            print ("incorrect entry, try again")
+                
     return shot
-    
 
+def shot_destiny():
+    hit = []
+    miss = []
+    comp = [] 
+    destiny = hit + miss + comp
+    print(destiny)
+    
+        
+        
+    
 def battle_board(hit, miss, comp):
 
     print("          The Battleships Game\n")   # Title
@@ -36,10 +52,8 @@ def battle_board(hit, miss, comp):
             place = place + 1
         print(x, " ", row)
 
-hit = [21,22]
-miss = [20,24,12,13]
-comp = [23] 
+
 
 shot = get_shot()
 battle_board(hit,miss,comp)
-        
+shot_destiny()      
