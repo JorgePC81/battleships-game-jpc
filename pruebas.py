@@ -1,3 +1,10 @@
+#variables of the game
+
+hit = []
+miss = []
+comp = []
+
+
 def battle_board(hit, miss, comp):
 
     print("          The Battleships Game\n")   # Title
@@ -20,7 +27,7 @@ def battle_board(hit, miss, comp):
             row = row + ch
             place = place + 1
         print(x, " ", row)
-
+        
 def get_shot(destiny):
     """enabling the player to enter the shot"""
 
@@ -40,6 +47,7 @@ while ok == "n":
     except ValueError:
         print ("incorrect entry, try again")
 
+"""
 def shot_destiny():
 hit = []
 miss = []
@@ -51,7 +59,7 @@ ship2_size3 = [15,25,35]
 ship1_size3 = [75,85,95]
 ship1_size4 = [45,46,47,48]
 ship1_size5 = [80,81,82,83,84]
+"""
+                
 
-shot = get_shot()
-battle_board(hit, miss, comp)
-shot_destiny()      
+battle_board(hit, miss, comp)       
