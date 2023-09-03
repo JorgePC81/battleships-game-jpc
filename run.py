@@ -41,13 +41,24 @@ def battle_board(hit, miss, comp):
         print(x, " ", row)
         
 def ships_choice():
+    """
+    ships_choice is the function where the player builds the ship fleet. 
+    """
+    
     print("please, place your ships in the board: vertically or horizontally")
-    input(int("ship 1 of two sections: " ,ship_choice))
-    if ship_choice >= 0 and ship_choice <= 99:
-        ship_choice.append(ship1_size2)
-    else:
-        print("incorrect entry. Please try again")
-    break
+    
+    ak = y:
+    while ak == y:
+        try:
+            input(int("ship 1 of two sections: " ,ship_choice))
+            if ship_choice >= 0 and ship_choice <= 99:
+                ship_choice.append(ship1_size2)
+                if ship1_size2(len) > 2:
+                     print("Wrong ship size. Please try again")
+                except ValueError:
+                    print("incorrect entry. Please try again")
+                    break
+    
 
     input(int("ship 2 of two sections: " ,ship2_size2))
     if ship_choice >= 0 and ship_choice <= 99:
