@@ -1,11 +1,9 @@
-#variables of the game
-
-hit = []
-miss = []
-comp = []
-
-
 def battle_board(hit, miss, comp):
+    """
+    function where I define the board for the game and what will be the types of shots for 
+    the game when they land on water or on the ships.
+    """
+    
 
     print("          The Battleships Game\n")   # Title
 
@@ -46,20 +44,47 @@ while ok == "n":
             break
     except ValueError:
         print ("incorrect entry, try again")
+        
+def ships_choice():
+    print("please, place your ships")
+    
 
-"""
+    input(int("ship 1 of two sections: "))
+    input(int("ship 1 of two sections: "))
+    input(int("ship 1 of two sections: "))
+    input(int("ship 1 of two sections: "))
+    input(int("ship 1 of two sections: "))
+    input(int("ship 1 of two sections: "))
+         
+        
+def get_shot(destiny):
+    """enabling the player to enter the shot"""
+
+ok = "n"
+while ok == "n":
+    try:
+        shot = input("please enter your guess: ")
+        shot = int(shot)
+        if shot < 0 or shot > 99:
+            print("incorrect number, try again")
+        else:
+            ok = 'y'
+            if shot in hit or shot in miss or shot in comp:
+                print("you have already guessed that, try again")
+                ok = 'n'
+            break
+    except ValueError:
+        print ("incorrect entry, try again")
+
+return shot
+
 def shot_destiny():
 hit = []
 miss = []
 comp = [] 
 destiny = hit + miss + comp
-ship1_size2 = [0,1]
-ship1_size2 = [3,4]
-ship2_size3 = [15,25,35]
-ship1_size3 = [75,85,95]
-ship1_size4 = [45,46,47,48]
-ship1_size5 = [80,81,82,83,84]
-"""
-                
 
-battle_board(hit, miss, comp)       
+
+battle_board(hit, miss, comp) 
+
+def get_shot()   

@@ -1,4 +1,23 @@
+#variables for the game
+
+hit = []
+miss = []
+comp = [] 
+ship1_size2 = []
+ship2_size2 = []
+ship3_size3 = []
+ship3_size3 = []
+ship4_size4 = []
+ship5_size5 = []
+ship_choice = list(range(100))
+
+
 def battle_board(hit, miss, comp):
+    """
+    function where I define the board for the game and what will be the types of shots for 
+    the game when they land on water or on the ships.
+    """
+    
 
     print("          The Battleships Game\n")   # Title
 
@@ -20,7 +39,52 @@ def battle_board(hit, miss, comp):
             row = row + ch
             place = place + 1
         print(x, " ", row)
+        
+def ships_choice():
+    print("please, place your ships in the board: vertically or horizontally")
+    input(int("ship 1 of two sections: " ,ship_choice))
+    if ship_choice >= 0 and ship_choice <= 99:
+        ship_choice.append(ship1_size2)
+    else:
+        print("incorrect entry. Please try again")
+    break
 
+    input(int("ship 2 of two sections: " ,ship2_size2))
+    if ship_choice >= 0 and ship_choice <= 99:
+        ship_choice.append(ship2_size2)
+    else:
+        print("incorrect entry. Please try again")
+    break
+        
+    input(int("ship 3 of three sections: " ,ship3_size3))
+    if ship_choice >= 0 and ship_choice <= 99:
+        ship_choice.append(ship3_size2)
+    else:
+        print("incorrect entry. Please try again")
+    break
+        
+    input(int("ship 4 of three sections: " ,ship3_size3))
+    if ship_choice >= 0 and ship_choice <= 99:
+        ship_choice.append(ship4_size2)
+    else:
+        print("incorrect entry. Please try again")
+    break
+        
+    input(int("ship 5 of four sections: " ,ship4_size4))
+    if ship_choice >= 0 and ship_choice <= 99:
+        ship_choice.append(ship5_size2)
+    else:
+        print("incorrect entry. Please try again")
+    break
+        
+    input(int("ship 6 of five sections: " ,ship5_size5))
+    if ship_choice >= 0 and ship_choice <= 99:
+        ship_choice.append(ship6_size2)
+    else:
+        print("incorrect entry. Please try again")
+    break
+        
+         
 def get_shot(destiny):
     """enabling the player to enter the shot"""
 
@@ -41,17 +105,11 @@ while ok == "n":
         print ("incorrect entry, try again")
 
 def shot_destiny():
-hit = []
-miss = []
-comp = [] 
-destiny = hit + miss + comp
-ship1_size2 = [0,1]
-ship1_size2 = [3,4]
-ship2_size3 = [15,25,35]
-ship1_size3 = [75,85,95]
-ship1_size4 = [45,46,47,48]
-ship1_size5 = [80,81,82,83,84]
+    destiny = hit + miss + comp
+    
+    
 
-shot = get_shot()
-battle_board(hit, miss, comp)
-shot_destiny()      
+
+battle_board(hit, miss, comp) 
+get_shot()  
+ships_choice() 
