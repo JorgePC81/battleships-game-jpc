@@ -6,9 +6,9 @@ comp = []
 ship1_size2 = []
 ship2_size2 = []
 ship3_size3 = []
-ship3_size3 = []
-ship4_size4 = []
-ship5_size5 = []
+ship4_size3 = []
+ship5_size4 = []
+ship6_size5 = []
 ship_choice = list(range(100))
 
 
@@ -47,53 +47,68 @@ def ships_choice():
     
     print("please, place your ships in the board: vertically or horizontally")
     
-    ak = y:
-    while ak == y:
+    ak = 'y'
+    while ak == 'y':
         try:
             input(int("ship 1 of two sections: " ,ship_choice))
             if ship_choice >= 0 and ship_choice <= 99:
                 ship_choice.append(ship1_size2)
-                if ship1_size2(len) > 2:
-                     print("Wrong ship size. Please try again")
-                except ValueError:
-                    print("incorrect entry. Please try again")
-                    break
+                if ship1_size2(len) == 2:
+                    print('Ship placed. Please, locate the next ship')
+        except ValueError:
+            print("incorrect entry. Please try again")
+            break
     
-
-    input(int("ship 2 of two sections: " ,ship2_size2))
-    if ship_choice >= 0 and ship_choice <= 99:
-        ship_choice.append(ship2_size2)
-    else:
-        print("incorrect entry. Please try again")
-    break
+        try:
+            input(int("ship 2 of two sections: " ,ship_choice))
+            if ship_choice >= 0 and ship_choice <= 99:
+                ship_choice.append(ship2_size2)
+                if ship2_size2(len) == 2:
+                    print('Ship placed. Please, locate the next ship')
+        except ValueError:
+            print("incorrect entry. Please try again")
+            break
         
-    input(int("ship 3 of three sections: " ,ship3_size3))
-    if ship_choice >= 0 and ship_choice <= 99:
-        ship_choice.append(ship3_size2)
-    else:
-        print("incorrect entry. Please try again")
-    break
+        try:
+            input(int("ship 3 of two sections: " ,ship_choice))
+            if ship_choice >= 0 and ship_choice <= 99:
+                ship_choice.append(ship3_size3)
+                if ship3_size3(len) == 3:
+                    print('Ship placed. Please, locate the next ship')
+        except ValueError:
+            print("incorrect entry. Please try again")
+            break
         
-    input(int("ship 4 of three sections: " ,ship3_size3))
-    if ship_choice >= 0 and ship_choice <= 99:
-        ship_choice.append(ship4_size2)
-    else:
-        print("incorrect entry. Please try again")
-    break
+        try:
+            input(int("ship 4 of three sections: " ,ship_choice))
+            if ship_choice >= 0 and ship_choice <= 99:
+                ship_choice.append(ship4_size3)
+                if ship1_size2(len) == 3:
+                    print('Ship placed. Please, locate the next ship')
+        except ValueError:
+            print("incorrect entry. Please try again")
+            break
         
-    input(int("ship 5 of four sections: " ,ship4_size4))
-    if ship_choice >= 0 and ship_choice <= 99:
-        ship_choice.append(ship5_size2)
-    else:
-        print("incorrect entry. Please try again")
-    break
+        try:
+            input(int("ship 4 of four sections: " ,ship_choice))
+            if ship_choice >= 0 and ship_choice <= 99:
+                ship_choice.append(ship5_size4)
+                if ship1_size2(len) == 4:
+                    print('Ship placed. Please, locate the next ship')
+        except ValueError:
+            print("incorrect entry. Please try again")
+            break
         
-    input(int("ship 6 of five sections: " ,ship5_size5))
-    if ship_choice >= 0 and ship_choice <= 99:
-        ship_choice.append(ship6_size2)
-    else:
-        print("incorrect entry. Please try again")
-    break
+        try:
+            input(int("ship 6 of two sections: " ,ship_choice))
+            if ship_choice >= 0 and ship_choice <= 99:
+                ship_choice.append(ship6_size5)
+                if ship1_size2(len) == 5:
+                    print('Ship placed. Please, locate the next ship')
+        except ValueError:
+            print("incorrect entry. Please try again")
+            break
+    
         
          
 def get_shot(destiny):
