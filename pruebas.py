@@ -1,3 +1,17 @@
+#variables for the game
+
+hit = []
+miss = []
+comp = [] 
+ship1_size2 = []
+ship2_size2 = []
+ship3_size3 = []
+ship4_size3 = []
+ship5_size4 = []
+ship6_size5 = []
+ship_choice = list(range(100))
+
+
 def battle_board(hit, miss, comp):
     """
     function where I define the board for the game and what will be the types of shots for 
@@ -26,37 +40,77 @@ def battle_board(hit, miss, comp):
             place = place + 1
         print(x, " ", row)
         
-def get_shot(destiny):
-    """enabling the player to enter the shot"""
-
-ok = "n"
-while ok == "n":
-    try:
-        shot = input("please enter your guess: ")
-        shot = int(shot)
-        if shot < 0 or shot > 99:
-            print("incorrect number, try again")
-        else:
-            ok = 'y'
-            if shot in hit or shot in miss or shot in comp:
-                print("you have already guessed that, try again")
-                ok = 'n'
-            break
-    except ValueError:
-        print ("incorrect entry, try again")
-        
 def ships_choice():
-    print("please, place your ships")
+    """
+    ships_choice is the function where the player builds the ship fleet. 
+    """
     
-
-    input(int("ship 1 of two sections: "))
-    input(int("ship 1 of two sections: "))
-    input(int("ship 1 of two sections: "))
-    input(int("ship 1 of two sections: "))
-    input(int("ship 1 of two sections: "))
-    input(int("ship 1 of two sections: "))
-         
+    print("please, place your ships in the board: vertically or horizontally")
+    
+    ak = 'y'
+    while ak == 'y':
+        try:
+            input(int("ship 1 of two sections: " ,ship_choice))
+            if ship_choice >= 0 and ship_choice <= 99:
+                ship_choice.append(ship1_size2)
+                if ship1_size2(len) == 2:
+                    print('Ship placed. Please, locate the next ship')
+        except ValueError:
+            print("incorrect entry. Please try again")
+            break
+    
+        try:
+            input(int("ship 2 of two sections: " ,ship_choice))
+            if ship_choice >= 0 and ship_choice <= 99:
+                ship_choice.append(ship2_size2)
+                if ship2_size2(len) == 2:
+                    print('Ship placed. Please, locate the next ship')
+        except ValueError:
+            print("incorrect entry. Please try again")
+            break
         
+        try:
+            input(int("ship 3 of two sections: " ,ship_choice))
+            if ship_choice >= 0 and ship_choice <= 99:
+                ship_choice.append(ship3_size3)
+                if ship3_size3(len) == 3:
+                    print('Ship placed. Please, locate the next ship')
+        except ValueError:
+            print("incorrect entry. Please try again")
+            break
+        
+        try:
+            input(int("ship 4 of three sections: " ,ship_choice))
+            if ship_choice >= 0 and ship_choice <= 99:
+                ship_choice.append(ship4_size3)
+                if ship1_size2(len) == 3:
+                    print('Ship placed. Please, locate the next ship')
+        except ValueError:
+            print("incorrect entry. Please try again")
+            break
+        
+        try:
+            input(int("ship 4 of four sections: " ,ship_choice))
+            if ship_choice >= 0 and ship_choice <= 99:
+                ship_choice.append(ship5_size4)
+                if ship1_size2(len) == 4:
+                    print('Ship placed. Please, locate the next ship')
+        except ValueError:
+            print("incorrect entry. Please try again")
+            break
+        
+        try:
+            input(int("ship 6 of two sections: " ,ship_choice))
+            if ship_choice >= 0 and ship_choice <= 99:
+                ship_choice.append(ship6_size5)
+                if ship1_size2(len) == 5:
+                    print('Ship placed. Please, locate the next ship')
+        except ValueError:
+            print("incorrect entry. Please try again")
+            break
+    
+        
+         
 def get_shot(destiny):
     """enabling the player to enter the shot"""
 
@@ -75,16 +129,13 @@ while ok == "n":
             break
     except ValueError:
         print ("incorrect entry, try again")
-
-return shot
 
 def shot_destiny():
-hit = []
-miss = []
-comp = [] 
-destiny = hit + miss + comp
+    destiny = hit + miss + comp
+    
+    
 
 
 battle_board(hit, miss, comp) 
-
-def get_shot()   
+get_shot()  
+ships_choice() 
