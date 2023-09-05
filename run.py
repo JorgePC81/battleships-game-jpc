@@ -138,4 +138,4 @@ def shot_destiny():
 
 battle_board(hit, miss, comp) 
 get_shot()  
-ships_choice() 
+ships_choice()
