@@ -2,7 +2,7 @@
 
 hit = []
 miss = []
-comp = [] 
+sank = [] 
 ship1_size2 = []
 ship2_size2 = []
 ship3_size3 = []
@@ -25,20 +25,20 @@ def battle_board(hit, miss, comp):
     # making a numeric diagram
     print ("     0  1  2  3  4  5  6  7  8  9")
      
-    place = 0  
+    fire = 0  
     for x in range(10): 
         row = ""
         for y in range(10):
             ch = " _ "
-            if place in miss:
+            if fire in miss:
                 ch = " x "
-            elif place in hit:
+            elif fire in hit:
                 ch = " o "
-            elif place in comp:
+            elif fire in sank:
                 ch = " O "
                 
             row = row + ch
-            place = place + 1
+            fire = fire + 1
         print(x, " ", row)
         
 def ships_choice():
@@ -54,85 +54,135 @@ def ships_choice():
             ship_choice1 = int(input("ship 1 of two sections: "))
             if ship_choice1 >= 0 and ship_choice1 <= 99:
                 ship1_size2.append(ship_choice1)
-                if len(ship1_size2) == 2:
-                    print('Ship placed. Please, locate the next ship')
+                if int(len(ship1_size2)) == 2:
+                    print("Ship placed. Please, locate the next ship")
+                else:
+                    ship_choice2 = int(input("complete your ship: "))
+                    ship1_size2.append(ship_choice2)
+                    if int(len(ship1_size2)) == 2:
+                        print("Ship placed. Please, locate the next ship")
+                    
         except ValueError:
             print("incorrect entry. Please try again")
-            break
+            
     
         try:
-            ship_choice2 = int(input("ship 2 of two sections: "))
-            if ship_choice2 >= 0 and ship_choice2 <= 99:
-                ship1_size2.append(ship_choice2)
-                if len(ship2_size2) == 2:
-                    print('Ship placed. Please, locate the next ship')
-        except ValueError:
-            print("incorrect entry. Please try again")
-            break
-        
-        try:
-            ship_choice3 = int(input("ship 3 of three sections: "))
+            ship_choice3 = int(input("ship 2 of two sections: "))
             if ship_choice3 >= 0 and ship_choice3 <= 99:
-                ship1_size2.append(ship_choice3)
-                if len(ship3_size3) == 3:
+                ship2_size2.append(ship_choice3)
+                ship_choice4_= int(input("complete your ship: "))
+                if int(len(ship1_size2)) == 2:
                     print('Ship placed. Please, locate the next ship')
         except ValueError:
             print("incorrect entry. Please try again")
-            break
+          
         
         try:
-            ship_choice4 = int(input("ship 4 of three sections: "))
-            if ship_choice4 >= 0 and ship_choice4 <= 99:
-                ship1_size2.append(ship_choice4)
-                if len(ship4_size3) == 3:
-                    print('Ship placed. Please, locate the next ship')
-        except ValueError:
-            print("incorrect entry. Please try again")
-            break
-        
-        try:
-            ship_choice5 = int(input("ship 5 of five sections: "))
+            ship_choice5 = int(input("ship 3 of three sections: "))
             if ship_choice5 >= 0 and ship_choice5 <= 99:
-                ship1_size2.append(ship_choice5)
-                if len(ship5_size4) == 4:
-                    print('Ship placed. Please, locate the next ship')
+                ship3_size3.append(ship_choice5)
+                if len(ship3_size3) < 3:
+                    ship_choice6 = int(input("complete your ship: "))
+                    ship3_size3.append(ship_choice6)
+                if int(len(ship3_size3)) < 3:
+                    ship_choice7 = int(input("complete your ship: "))
+                    if ship_choice7 >= 0 and ship_choice7 <= 99:
+                        ship3_size3.append(ship_choice7)
+                        if int(len(ship3_size3)) == 3:
+                            print('Ship placed. Please, locate the next ship')  
+                                
         except ValueError:
             print("incorrect entry. Please try again")
-            break
+
         
         try:
-            ship_choice6 = int(input("ship 6 of six sections: "))
-            if ship_choice6 >= 0 and ship_choice6 <= 99:
-                ship1_size2.append(ship_choice6)
-                if len(ship6_size5) == 5:
-                    print('Ship placed. Please, locate the next ship')
+            ship_choice8 = int(input("ship 4 of three sections: "))
+            if ship_choice8 >= 0 and ship_choice8 <= 99:
+                ship4_size3.append(ship_choice8)
+                if int(len(ship4_size3)) < 3:
+                    ship_choice9 = int(input("complete your ship: "))
+                    ship4_size3.append(ship_choice9)
+                if len(ship4_size3) < 3:
+                    ship_choice10 = int(input("complete your ship: "))
+                    if ship_choice10 >= 0 and ship_choice10 <= 99:
+                        ship4_size3.append(ship_choice10)
+                    if int(len(ship4_size3)) == 3:
+                        print('Ship placed. Please, locate the next ship')
+                                    
         except ValueError:
             print("incorrect entry. Please try again")
-            break
+            
     
+        try:
+            ship_choice11 = int(input("ship 5 of four sections: "))
+            if ship_choice11 >= 0 and ship_choice11 <= 99:
+                ship5_size4.append(ship_choice11)
+                if int(len(ship5_size4)) < 4:
+                    ship_choice12 = int(input("complete your ship: "))
+                    ship5_size4.append(ship_choice12)
+                if len(ship5_size4) < 4:
+                    ship_choice13 = int(input("complete your ship: "))
+                    if ship_choice13 >= 0 and ship_choice10 <= 99:
+                        ship5_size4.append(ship_choice13)
+                if len(ship5_size4) < 4:
+                    ship_choice14 = int(input("complete your ship: "))
+                    if ship_choice14 >= 0 and ship_choice14 <= 99:
+                        ship5_size4.append(ship_choice14)
+                    if int(len(ship5_size4)) == 4:
+                        print('Ship placed. Please, locate the next ship')
+                                    
+        except ValueError:
+            print("incorrect entry. Please try again")
+            
+        
+        try:
+            ship_choice15 = int(input("ship 6 of five sections: "))
+            if ship_choice15 >= 0 and ship_choice15 <= 99:
+                ship6_size5.append(ship_choice15)
+                if int(len(ship6_size5)) < 5:
+                    ship_choice16 = int(input("complete your ship: "))
+                    ship6_size5.append(ship_choice16)
+                if len(ship6_size5) < 5:
+                    ship_choice17 = int(input("complete your ship: "))
+                    if ship_choice17 >= 0 and ship_choice17 <= 99:
+                        ship6_size5.append(ship_choice17)
+                if len(ship6_size5) < 5:
+                    ship_choice18 = int(input("complete your ship: "))
+                    if ship_choice18 >= 0 and ship_choice18 <= 99:
+                        ship6_size5.append(ship_choice18)
+                if len(ship6_size5) < 5:
+                    ship_choice19 = int(input("complete your ship: "))
+                    if ship_choice19 >= 0 and ship_choice19 <= 99:
+                        ship6_size5.append(ship_choice19)    
+                    if int(len(ship6_size5)) == 5:
+                       print('Ship placed. Please, locate the next ship')
+                           
+        except ValueError:
+            print("incorrect entry. Please try again")
         
          
 def get_shot():
     """enabling the player to enter the shot"""
 
-    ok = "n"
-    while ok == "n":
+    progress = "n"
+    while progress == "n":
         try:
-            shot = input("please enter your guess: ")
+            shot = input("please enter your attack: ")
             shot = int(shot)
             if shot < 0 or shot > 99:
                 print("incorrect number, try again")
             else:
-                ok = 'y'
-                if shot in hit or shot in miss or shot in comp:
-                    print("you have already guessed that, try again")
-                    ok = 'n'
+                progress = 'y'
+                if shot in hit or shot in miss or shot in sank:
+                    print("you already tried this shot, try again")
+                    progress = 'n'
                 break
         except ValueError:
-            print ("incorrect entry, try again")
+            print ("wrong entry, repeat your shot")
     
 
 
-#battle_board(hit, miss, comp) 
-#get_shot()
+battle_board(hit, miss, sank) 
 ships_choice()
+get_shot()
+
