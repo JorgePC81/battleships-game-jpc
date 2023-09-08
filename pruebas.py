@@ -1,15 +1,11 @@
 #variables for the game
 
-hit = []
-miss = []
-comp = [] 
 ship1_size2 = []
 ship2_size2 = []
 ship3_size3 = []
 ship4_size3 = []
 ship5_size4 = []
 ship6_size5 = []
-ship_choice = list(range(100))
 
 
 def battle_board(hit, miss, comp):

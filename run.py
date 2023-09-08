@@ -1,8 +1,5 @@
 #variables for the game
 
-hit = []
-miss = []
-sank = []
 ship1_size2 = []
 ship2_size2 = []
 ship3_size3 = []
@@ -13,7 +10,7 @@ ship6_size5 = []
 
 
 
-def battle_board(hit, miss, sank):
+def battle_board(damage, miss, sank):
     """
     function where I define the board for the game and what will be the types of shots for 
     the game when they land on water or on the ships.
@@ -23,22 +20,14 @@ def battle_board(hit, miss, sank):
     print("          The Battleships Game\n")   # Title
 
     # making a numeric diagram
-    print ("     0  1  2  3  4  5  6  7  8  9")
-     
     fire = 0  
     for x in range(10): 
         row = ""
         for y in range(10):
-            sp = " _ "    
-            if fire in miss:
-                sp = " x "
-            elif fire in hit:
-                sp = " o "
-            elif fire in sank:
-                sp = " O "
-                    
-                row = row + sp
-                fire = fire + 1
+            sp = " _ "
+                
+            row = row + sp
+            fire = fire + 1
         print(x, " ", row)
         
 def ships_choice():
@@ -155,7 +144,7 @@ def ships_choice():
                     if ship_choice19 >= 0 and ship_choice19 <= 99:
                         ship6_size5.append(ship_choice19)    
                     if int(len(ship6_size5)) == 5:
-                       print('Ship placed. Please, locate the next ship')
+                       print('ALL YOUR SHIPS ARE ON THE WATER. PREPARE TO SHOT!')
                            
         except ValueError:
             print("incorrect entry. Please try again")
@@ -180,12 +169,19 @@ def get_shot():
         except ValueError:
             print ("wrong entry, repeat your shot")
             
+            if fire in miss:
+                sp = " x "
+            elif fire in damage:
+                sp = " o "
+            elif fire in sank:
+                sp = " O "
+            
             
             
     
 
 
-battle_board(hit, miss, sank) 
+battle_board(damage, miss, sank) 
 ships_choice()
 get_shot()
 
