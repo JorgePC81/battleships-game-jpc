@@ -1,8 +1,8 @@
 #variables for the game
 
-hit = []
-miss = []
-sank = [] 
+hit = [3,4,5]
+miss = [8,10]
+sank = [4] 
 ship1_size2 = []
 ship2_size2 = []
 ship3_size3 = []
@@ -13,7 +13,7 @@ ship6_size5 = []
 
 
 
-def battle_board(hit, miss, comp):
+def battle_board(hit, miss, sank):
     """
     function where I define the board for the game and what will be the types of shots for 
     the game when they land on water or on the ships.
@@ -173,7 +173,7 @@ def get_shot():
                 print("incorrect number, try again")
             else:
                 progress = 'y'
-                if shot in hit or shot in miss or shot in sank:
+                if shot in miss or shot hit  or shot in sank:
                     print("you already tried this shot, try again")
                     progress = 'n'
                 break
