@@ -1,8 +1,8 @@
 #variables for the game
 
-hit = [3,4,5]
-miss = [8,10]
-sank = [4] 
+hit = []
+miss = []
+sank = []
 ship1_size2 = []
 ship2_size2 = []
 ship3_size3 = []
@@ -29,16 +29,16 @@ def battle_board(hit, miss, sank):
     for x in range(10): 
         row = ""
         for y in range(10):
-            ch = " _ "
+            sp = " _ "    
             if fire in miss:
-                ch = " x "
+                sp = " x "
             elif fire in hit:
-                ch = " o "
+                sp = " o "
             elif fire in sank:
-                ch = " O "
-                
-            row = row + ch
-            fire = fire + 1
+                sp = " O "
+                    
+                row = row + sp
+                fire = fire + 1
         print(x, " ", row)
         
 def ships_choice():
@@ -46,7 +46,7 @@ def ships_choice():
     ships_choice is the function where the player builds the ship fleet. 
     """
     
-    print("please, place your ships in the board: vertically or horizontally")
+    print("Please, place your ships in the board: vertically or horizontally. They cannot cross or touch each other")
     
     ak = 'y'
     while ak == 'y':
@@ -160,25 +160,28 @@ def ships_choice():
         except ValueError:
             print("incorrect entry. Please try again")
         
-         
+
 def get_shot():
     """enabling the player to enter the shot"""
 
-    progress = "n"
-    while progress == "n":
+    progress = "stop"
+    while progress == "stop":
         try:
             shot = input("please enter your attack: ")
             shot = int(shot)
             if shot < 0 or shot > 99:
                 print("incorrect number, try again")
             else:
-                progress = 'y'
-                if shot in miss or shot hit  or shot in sank:
+                progress = 'yes'
+                if shot in miss or shot in hit  or shot in sank:
                     print("you already tried this shot, try again")
                     progress = 'n'
                 break
         except ValueError:
             print ("wrong entry, repeat your shot")
+            
+            
+            
     
 
 
