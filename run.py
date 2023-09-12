@@ -6,11 +6,13 @@ ship3_size3 = []
 ship4_size3 = []
 ship5_size4 = []
 ship6_size5 = []
+player_ships = ship1_size2 + ship2_size2 + ship3_size3 + ship4_size3 + ship5_size4 + ship6_size5
+shots_rec = []
+FLOW = "stop"
 
 
 
-
-def battle_board(damage, miss, sank):
+def battle_board(player_ships):
     """
     function where I define the board for the game and what will be the types of shots for 
     the game when they land on water or on the ships.
@@ -20,17 +22,24 @@ def battle_board(damage, miss, sank):
     print("          The Battleships Game\n")   # Title
 
     # making a numeric diagram
-    fire = 0  
+    print ("     0  1  2  3  4  5  6  7  8  9")
+    
+    shot = 0  
     for x in range(10): 
         row = ""
         for y in range(10):
             sp = " _ "
-                
+            if shot not in player_ships:
+                sp = " x "
+            elif shot in player_ships:
+                sp = " o " 
+            elif shot in player_ships and len(ship1_size2) == 1 or len(ship2_size2) ==1 or len(ship3_size3) == 2 or len(ship4_size3) == 2 or len(ship5_size4) == 3 or len(ship6_size5) == 4:
+                sp = " O " #sank ship
             row = row + sp
-            fire = fire + 1
+            shot = shot + 1
         print(x, " ", row)
         
-def ships_choice():
+def ships_choice(player_ships):
     """
     ships_choice is the function where the player builds the ship fleet. 
     """
@@ -50,6 +59,7 @@ def ships_choice():
                     ship1_size2.append(ship_choice2)
                     if int(len(ship1_size2)) == 2:
                         print("Ship placed. Please, locate the next ship")
+                        
                     
         except ValueError:
             print("incorrect entry. Please try again")
@@ -145,43 +155,40 @@ def ships_choice():
                         ship6_size5.append(ship_choice19)    
                     if int(len(ship6_size5)) == 5:
                        print('ALL YOUR SHIPS ARE ON THE WATER. PREPARE TO SHOT!')
-                           
+                       print(battle_board(player_ships))
+                    break
         except ValueError:
             print("incorrect entry. Please try again")
-        
+    
 
-def get_shot():
+def get_shot(shots_rec, player_ships):
     """enabling the player to enter the shot"""
-
-    progress = "stop"
-    while progress == "stop":
+    
+    FLOW = "stop"
+    while FLOW == "stop":
         try:
-            shot = input("please enter your attack: ")
-            shot = int(shot)
+            shot = int(input("please enter your attack: "))
             if shot < 0 or shot > 99:
-                print("incorrect number, try again")
+                print("incorrect entry, try again")
             else:
-                progress = 'yes'
-                if shot in miss or shot in hit  or shot in sank:
-                    print("you already tried this shot, try again")
-                    progress = 'n'
-                break
+                shots_rec.append(shot)
+                FLOW = "run"
+                while FLOW == "run":
+                    if shot not in player_ships:
+                        sp = " x " #watter
+                    elif shot in player_ships:
+                        sp = " o " #damage
+                        print("You damaged a ship")
+                        if len(ship1_size2) == 2 or len(ship2_size2) == 2 or len(ship3_size3) == 3 or len(ship4_size3) == 3 or len(ship5_size4) == 4 or len(ship6_size5) == 5:
+                            sp = " O " #sank ship
+                            print("Your ship is sank")
+                        elif shot in shots_rec:
+                            print("you have already shot here")
+                            print(battle_board(player_ships))
+                        
         except ValueError:
             print ("wrong entry, repeat your shot")
             
-            if fire in miss:
-                sp = " x "
-            elif fire in damage:
-                sp = " o "
-            elif fire in sank:
-                sp = " O "
-            
-            
-            
-    
-
-
-battle_board(damage, miss, sank) 
-ships_choice()
-get_shot()
-
+battle_board(player_ships) 
+ships_choice(player_ships)
+get_shot(shots_rec, player_ships)
