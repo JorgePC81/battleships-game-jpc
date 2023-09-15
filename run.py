@@ -17,23 +17,51 @@ def battle_board():
     """
     function where I define how the board for the game will look like
     """
-i = 0
-cad = ""
-for x in range(100):
-    if x in shots_rec:
-        if x in ship1_size2 or x in ship2_size2 or x in ship3_size3 or x in ship4_size3 or x in ship5_size4 or x in ship6_size5:
-            cad = cad + " o "
-            if len(ship1_size2) == 2 or len(ship2_size2) == 2 or len(ship3_size3) == 3 or len(ship4_size3) == 3 or len(ship5_size4) == 4 or len(ship6_size5) == 5:
-                cad = cad + " O "
-    else:
-        cad = cad + " x "
-    i = i + 1
-    if i > 9:
-        print(cad)
-        i = 0
-        cad = ""
+    i = 0
+    cad = ""
+    for x in range(1, 101):
+        if x in shots_rec:
+            if x in ship1_size2:
+                if sank_check_ship1():
+                    cad = cad + " O "
+                else:
+                    cad = cad + " o "
+            elif x in ship2_size2:
+                if sank_check_ship2():
+                    cad = cad + " O "
+                else:
+                    cad = cad + " o "
+            elif x in ship3_size3:
+                if sank_check_ship3():
+                    cad = cad + " O "
+                else:
+                    cad = cad + " o "
+            elif x in ship4_size3:
+                if sank_check_ship4():
+                    cad = cad + " O "
+                else:
+                    cad = cad + " o "
+            elif x in ship5_size4:
+                if sank_check_ship5():
+                    cad = cad + " O "
+                else:
+                    cad = cad + " o "
+            elif x in ship6_size5:
+                if sank_check_ship6():
+                    cad = cad + " O "
+                else:
+                    cad = cad + " o "
+            else:
+                cad = cad + " x "
+        else:
+            cad = cad + " x "
+        i = i + 1
+        if i > 9:
+            print(cad)
+            i = 0
+            cad = ""
+            
     
-        
 def ships_choice():
     """
     ships_choice is the function where the player builds the ship fleet. 
@@ -89,8 +117,7 @@ def ships_choice():
                                 
         except ValueError:
             print("incorrect entry. Please try again")
-
-        
+            
         try:
             ship_choice8 = int(input("ship 4, section 1: "))
             if ship_choice8 >= 0 and ship_choice8 <= 99:
@@ -109,7 +136,6 @@ def ships_choice():
         except ValueError:
             print("incorrect entry. Please try again")
             
-    
         try:
             ship_choice11 = int(input("ship 5, section 1. "))
             if ship_choice11 >= 0 and ship_choice11 <= 99:
@@ -132,7 +158,6 @@ def ships_choice():
         except ValueError:
             print("incorrect entry. Please try again")
             
-        
         try:
             ship_choice15 = int(input("ship 6, section 1: "))
             if ship_choice15 >= 0 and ship_choice15 <= 99:
@@ -154,9 +179,9 @@ def ships_choice():
                     if ship_choice19 >= 0 and ship_choice19 <= 99:
                         ship6_size5.append(ship_choice19)    
                     if int(len(ship6_size5)) == 5:
-                       print('ALL YOUR SHIPS ARE ON THE WATER. PREPARE TO BATTLE!')
-                       battle_board()
-                    break
+                        print('ALL YOUR SHIPS ARE ON THE WATER. PREPARE TO BATTLE!')
+                        break
+                    
         except ValueError:
             print("incorrect entry. Please try again")
             
@@ -165,44 +190,53 @@ def ships_choice():
 def get_shot():
     """enabling the player to enter the shot"""
     
-    FLOW = "stop"
-    while FLOW == "stop":
+    FLOW = "run"
+    while FLOW == "run":
         try:
             shot = int(input("enemy shoots: "))
-            shots_rec.append(shot)
-            if shot not in ship1_size2 and shot not in ship2_size2 and shot not in ship3_size3 and shot not in ship4_size3 and shot not in ship5_size4 and shot not in ship6_size5:
-                print ("Your enemy missed")
+            if shot < 1 or shot > 100:
+                print("Wrong entry")
+            elif shot in shots_rec:
+                print("You already shot there")
             else:
-                if sank_check_ship1() == True:
-                    print("Your ship 1 is sank")
-                elif shot in ship1_size2:
-                    print("Your enemy damaged one of your ships")
-                if sank_check_ship2() == True:
-                    print("Your ship 2 is sank")
-                elif shot in ship2_size2:
-                    print("Your enemy damaged one of your ships")
-                if sank_check_ship3() == True:
-                    print("Your ship 3 is sank")
-                elif shot in ship3_size3:
-                    print("Your enemy damaged one of your ships")
-                if sank_check_ship4() == True:
-                    print("Your ship 4 is sank")
-                elif shot in ship4_size3:
-                    print("Your enemy damaged one of your ships")
-                if sank_check_ship5() == True:
-                    print("Your ship 5 is sank")
-                elif shot in ship5_size4:
-                    print("Your enemy damaged one of your ships")
-                if sank_check_ship6() == True:
-                    print("Your ship 6 is sank")
-                elif shot in ship6_size5:
-                    print("Your enemy damaged one of your ships")
-                end_game()
- 
+                shots_rec.append(shot)
+                if shot not in ship1_size2 and shot not in ship2_size2 and shot not in ship3_size3 and shot not in ship4_size3 and shot not in ship5_size4 and shot not in ship6_size5:
+                    print ("Your enemy missed")
+                else:
+                    battle_board()
+                    print("So far, the enemy has shot " + str(shots_rec) + " times")
+                    if sank_check_ship1() == True:
+                        print("Your ship 1 is sank")
+                    elif shot in ship1_size2:
+                        print("Your enemy damaged one of your ships")
+                    if sank_check_ship2() == True:
+                        print("Your ship 2 is sank")
+                    elif shot in ship2_size2:
+                        print("Your enemy damaged one of your ships")
+                    if sank_check_ship3() == True:
+                        print("Your ship 3 is sank")
+                    elif shot in ship3_size3:
+                        print("Your enemy damaged one of your ships")
+                    if sank_check_ship4() == True:
+                        print("Your ship 4 is sank")
+                    elif shot in ship4_size3:
+                        print("Your enemy damaged one of your ships")
+                    if sank_check_ship5() == True:
+                        print("Your ship 5 is sank")
+                    elif shot in ship5_size4:
+                        print("Your enemy damaged one of your ships")
+                    if sank_check_ship6() == True:
+                        print("Your ship 6 is sank")
+                    elif shot in ship6_size5:
+                        print("Your enemy damaged one of your ships")
+                    if end_game() == True:
+                        FLOW = "stop"
+                
+                
         except ValueError:
             print ("wrong entry, repeat your shot")
-            battle_board()
-            
+                
+        
 def sank_check_ship1():
     for i in ship1_size2:
         if i not in shots_rec:
@@ -243,6 +277,10 @@ def end_game():
     if sank_check_ship1() == True and sank_check_ship2() == True and sank_check_ship3() == True and sank_check_ship4() == True and sank_check_ship5() == True and sank_check_ship6() == True:
         print("YOUR ENEMY WON THE BATTLE")
         print("GAME OVER")
+        return True
+    else:
+        return False
+     
             
 battle_board() 
 ships_choice()
@@ -253,4 +291,3 @@ sank_check_ship3()
 sank_check_ship4()
 sank_check_ship5()
 sank_check_ship6()
-end_game()
