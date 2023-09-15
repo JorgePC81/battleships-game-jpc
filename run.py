@@ -1,4 +1,4 @@
-#variables for the game
+# variables for the game
 
 ship1_size2 = []
 ship2_size2 = []
@@ -6,16 +6,18 @@ ship3_size3 = []
 ship4_size3 = []
 ship5_size4 = []
 ship6_size5 = []
-FLOW = "stop"
+FLOW = "run"
 shots_rec = []
 
 
-print("Welcome to the Battleship game. You will have to place your ships in the board and then shot to the enemy ships. The first player to sink all the enemy ships wins the game. Good luck!")
+print("Welcome to the Battleship game.")
+print("You will place your ships on the board and shot to the enemy ships.")
+print("The first player to sink all the enemy ships wins the game. Good luck!")
 
 
 def battle_board():
     """
-    function where I define how the board for the game will look like
+    function where I define how the board for the game will look like.
     """
     i = 0
     cad = ""
@@ -60,15 +62,15 @@ def battle_board():
             print(cad)
             i = 0
             cad = ""
-            
-    
+
+
 def ships_choice():
+
     """
-    ships_choice is the function where the player builds the ship fleet. 
+    ships_choice is the function where the player builds the ship fleet.
     """
-    
-    print("Please, place your ships in the board: vertically or horizontally. They cannot cross or touch each other")
-    
+    print("Please, place your ships on the board: vertically or horizontally.")
+    print("They cannot cross or touch each other")
     ak = 'y'
     while ak == 'y':
         try:
@@ -81,12 +83,8 @@ def ships_choice():
                     ship1_size2.append(ship_choice2)
                 if int(len(ship1_size2)) == 2:
                     print("Ship placed. Please, locate the next ship")
-                        
-                    
         except ValueError:
             print("incorrect entry. Please try again")
-            
-    
         try:
             ship_choice3 = int(input("ship 2, section 1: "))
             if ship_choice3 >= 0 and ship_choice3 <= 99:
@@ -98,8 +96,6 @@ def ships_choice():
                 print('Ship placed. Please, locate the next ship')
         except ValueError:
             print("incorrect entry. Please try again")
-          
-        
         try:
             ship_choice5 = int(input("ship 3, section 1: "))
             if ship_choice5 >= 0 and ship_choice5 <= 99:
@@ -113,11 +109,9 @@ def ships_choice():
                 if ship_choice7 >= 0 and ship_choice7 <= 99:
                     ship3_size3.append(ship_choice7)
                 if int(len(ship3_size3)) == 3:
-                    print('Ship placed. Please, locate the next ship')  
-                                
+                    print("Ship placed. Please, locate the next ship.")
         except ValueError:
             print("incorrect entry. Please try again")
-            
         try:
             ship_choice8 = int(input("ship 4, section 1: "))
             if ship_choice8 >= 0 and ship_choice8 <= 99:
@@ -132,10 +126,8 @@ def ships_choice():
                         ship4_size3.append(ship_choice10)
                     if int(len(ship4_size3)) == 3:
                         print('Ship placed. Please, locate the next ship')
-                                    
         except ValueError:
             print("incorrect entry. Please try again")
-            
         try:
             ship_choice11 = int(input("ship 5, section 1. "))
             if ship_choice11 >= 0 and ship_choice11 <= 99:
@@ -154,10 +146,8 @@ def ships_choice():
                         ship5_size4.append(ship_choice14)
                     if int(len(ship5_size4)) == 4:
                         print('Ship placed. Please, locate the next ship')
-                                    
         except ValueError:
             print("incorrect entry. Please try again")
-            
         try:
             ship_choice15 = int(input("ship 6, section 1: "))
             if ship_choice15 >= 0 and ship_choice15 <= 99:
@@ -177,19 +167,16 @@ def ships_choice():
                 if len(ship6_size5) < 5:
                     ship_choice19 = int(input("ship 6, section 5: "))
                     if ship_choice19 >= 0 and ship_choice19 <= 99:
-                        ship6_size5.append(ship_choice19)    
+                        ship6_size5.append(ship_choice19)
                     if int(len(ship6_size5)) == 5:
-                        print('ALL YOUR SHIPS ARE ON THE WATER. PREPARE TO BATTLE!')
+                        print('SHIPS ON THE WATER. PREPARE TO BATTLE!')
                         break
-                    
         except ValueError:
             print("incorrect entry. Please try again")
-            
-    
+
 
 def get_shot():
-    """enabling the player to enter the shot"""
-    
+    """enabling the enemy to enter the shot and when it sinks"""
     FLOW = "run"
     while FLOW == "run":
         try:
@@ -201,47 +188,49 @@ def get_shot():
             else:
                 shots_rec.append(shot)
                 if shot not in ship1_size2 and shot not in ship2_size2 and shot not in ship3_size3 and shot not in ship4_size3 and shot not in ship5_size4 and shot not in ship6_size5:
-                    print ("Your enemy missed")
+                    print("Your enemy missed")
                 else:
                     battle_board()
                     print("So far, the enemy has shot " + str(shots_rec) + " times")
-                    if sank_check_ship1() == True:
+                    if sank_check_ship1() is True:
                         print("Your ship 1 is sank")
                     elif shot in ship1_size2:
                         print("Your enemy damaged one of your ships")
-                    if sank_check_ship2() == True:
+                    if sank_check_ship2() is True:
                         print("Your ship 2 is sank")
                     elif shot in ship2_size2:
                         print("Your enemy damaged one of your ships")
-                    if sank_check_ship3() == True:
+                    if sank_check_ship3() is True:
                         print("Your ship 3 is sank")
                     elif shot in ship3_size3:
                         print("Your enemy damaged one of your ships")
-                    if sank_check_ship4() == True:
+                    if sank_check_ship4() is True:
                         print("Your ship 4 is sank")
                     elif shot in ship4_size3:
                         print("Your enemy damaged one of your ships")
-                    if sank_check_ship5() == True:
+                    if sank_check_ship5() is True:
                         print("Your ship 5 is sank")
                     elif shot in ship5_size4:
                         print("Your enemy damaged one of your ships")
-                    if sank_check_ship6() == True:
+                    if sank_check_ship6() is True:
                         print("Your ship 6 is sank")
                     elif shot in ship6_size5:
                         print("Your enemy damaged one of your ships")
-                    if end_game() == True:
+                    if end_game() is True:
                         FLOW = "stop"
-                
-                
         except ValueError:
-            print ("wrong entry, repeat your shot")
-                
-        
+            print("wrong entry, repeat your shot")
+
+
 def sank_check_ship1():
+    """
+    functions to check if the ships are sank
+    """
     for i in ship1_size2:
         if i not in shots_rec:
             return False
     return True
+
 
 def sank_check_ship2():
     for i in ship2_size2:
@@ -249,11 +238,13 @@ def sank_check_ship2():
             return False
     return True
 
+
 def sank_check_ship3():
     for i in ship3_size3:
         if i not in shots_rec:
             return False
     return True
+
 
 def sank_check_ship4():
     for i in ship4_size3:
@@ -261,11 +252,13 @@ def sank_check_ship4():
             return False
     return True
 
+
 def sank_check_ship5():
     for i in ship5_size4:
         if i not in shots_rec:
             return False
     return True
+
 
 def sank_check_ship6():
     for i in ship6_size5:
@@ -273,16 +266,20 @@ def sank_check_ship6():
             return False
     return True
 
+
 def end_game():
-    if sank_check_ship1() == True and sank_check_ship2() == True and sank_check_ship3() == True and sank_check_ship4() == True and sank_check_ship5() == True and sank_check_ship6() == True:
+    """
+    function to end the game
+    """
+    if sank_check_ship1() is True and sank_check_ship2() is True and sank_check_ship3() is True and sank_check_ship4() is True and sank_check_ship5() is True and sank_check_ship6() is True:
         print("YOUR ENEMY WON THE BATTLE")
         print("GAME OVER")
         return True
     else:
         return False
-     
-            
-battle_board() 
+
+
+battle_board()
 ships_choice()
 get_shot()
 sank_check_ship1()
