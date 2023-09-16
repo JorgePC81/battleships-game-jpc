@@ -9,7 +9,7 @@ ship6_size5 = []
 FLOW = "run"
 shots_rec = []
 
-
+name = input("Please, enter your name: ")
 print("Welcome to the Battleship game.")
 print("You will place your ships on the board and shot to the enemy ships.")
 print("The first player to sink all the enemy ships wins the game. Good luck!")
@@ -176,7 +176,7 @@ def ships_choice():
 
 
 def get_shot():
-    """enabling the enemy to enter the shot and when it sinks"""
+    """enabling the enemy to shoot and check when ships sink"""
     FLOW = "run"
     while FLOW == "run":
         try:
@@ -191,7 +191,7 @@ def get_shot():
                     print("Your enemy missed")
                 else:
                     battle_board()
-                    print("So far, the enemy has shot " + str(shots_rec) + " times")
+                    print("So far, the enemy has shot " + str(shots_rec) + " shots")
                     if sank_check_ship1() is True:
                         print("Your ship 1 is sank")
                     elif shot in ship1_size2:
@@ -272,7 +272,7 @@ def end_game():
     function to end the game
     """
     if sank_check_ship1() is True and sank_check_ship2() is True and sank_check_ship3() is True and sank_check_ship4() is True and sank_check_ship5() is True and sank_check_ship6() is True:
-        print("YOUR ENEMY WON THE BATTLE")
+        print("YOUR SHIPS ARE DESTROYED")
         print("GAME OVER")
         return True
     else:
