@@ -12,6 +12,7 @@ shots_rec = []
 name = input("Please, enter your name: ")
 print("Welcome to the Battleship game.")
 print("You will place your ships on the board and shot to the enemy ships.")
+print(x = water; o = damage; O = sank)
 print("The first player to sink all the enemy ships wins the game. Good luck!")
 
 
